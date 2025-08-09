@@ -1,4 +1,4 @@
-const mq = window.matchMedia("(max-width: 800px)");
+const mq = window.matchMedia("(max-width: 700px)");
 function hamburger() {
 	const hamburger = document.querySelector(".hamburger");
 	const menu = document.querySelector(".menu");
@@ -180,9 +180,9 @@ function addToCart() {
 	
 	 <div class="info">
 	 <img class="thumbnail" />
-    <div class="desc-price">
+    <div class="desc-cost">
       <div class="desc">Fall Limited Edition Sneakers</div>
-      <div class="price">$125.00 × 3 $375.00</div>
+      <div class="cost">$125.00 × 3 <strong>$375.00</strong></div>
     </div>
 <img src="images/icon-delete.svg" alt="">
 <div class="delete"></div> 
@@ -205,3 +205,19 @@ function addToCart() {
 	});
 }
 addToCart();
+const meq = window.matchMedia("(min-width: 700px)");
+function displayThumbnail() {
+	
+if (meq.matches){
+	const thumbnailImages=`
+				<img src="images/image-product-1-thumbnail.jpg" alt="">
+				<img src="images/image-product-2-thumbnail.jpg" alt="">
+				<img src="images/image-product-3-thumbnail.jpg" alt="">
+				<img src="images/image-product-4-thumbnail.jpg" alt="">
+
+			
+			`
+			document.querySelector(".thumbnailImages").innerHTML+=(thumbnailImages)
+}
+}
+meq.addEventListener("change", displayThumbnail());

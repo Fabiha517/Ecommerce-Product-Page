@@ -21,7 +21,7 @@
 		<link rel="stylesheet" href="utility.css" />
 	</head>
 	<body>
-		<div class="nav flex items-center">
+		<div class="container"><div class="nav flex items-center">
 			<div class="leftNav flex items-center">
 				<img class="menu" src="images/icon-menu.svg" alt="" />
 				<p class="heading"><img class="logo" src="images/logo.svg" alt="" /></p>
@@ -47,7 +47,8 @@
 		</div>
 
 		<div class="overlay"></div>
-		<div class="imageContainer">
+		<div class="wrapper">
+			<div class="imageWrapper"><div class="imageContainer">
 			<div class="imageSlider">
 				<button class="previous-arrow">
 					<img src="images/icon-previous.svg" alt="" />
@@ -67,10 +68,13 @@
 				<button class="next-arrow">
 					<img src="images/icon-next.svg" alt="" />
 				</button>
-			</div>
-		</div>
 
-		<div class="afterImage">
+			</div>
+		
+		</div>
+		<div class="thumbnailImages"></div>
+</div>
+		<div class="descWrapper"><div class="afterImage">
 			<h3>Sneaker Company</h3>
 			<h1>Fall Limited Edition Sneakers</h1>
 			<div class="description">
@@ -87,7 +91,7 @@
 				</div>
 				<div class="oldPrice">$250.00</div>
 			</div>
-			<div class="quantity flex items-center">
+			<div class="buttonWrapper"><div class="quantity flex items-center">
 				<button class="minus">
 					<img class="minus" src="images/icon-minus.svg" alt="" />
 				</button>
@@ -105,7 +109,7 @@
 				</svg>
 				<p>Add to cart</p>
 			</button>
-		</div>
-		<script src="script.js"></script>
+		</div></div></div></div>
+</div>		<script src="script.js"></script>
 	</body>
 </html>
