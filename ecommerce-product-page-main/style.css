@@ -105,9 +105,10 @@ body {
 }
 
 .avatar {
+  border: 2px solid transparent;
   object-fit: contain;
   height: 40px;
-  width: 30px;
+  width: 40px;
 }
 .cart-image {
   gap: 20px;
@@ -186,7 +187,7 @@ body {
 .productImages img {
   width: 100%;
   height: auto;
-  object-fit: contain;
+
   flex-shrink: 0;
 }
 .imageContainer button {
@@ -267,18 +268,26 @@ h1 {
 }
 .quantity button:hover {
   cursor: pointer;
+  color: hsl(25, 86%, 66%);
 }
 .minus {
   width: fit-content;
   background: none;
   border: none;
   outline: none;
+  color: #ff7e1b;
+  height: 16px;
+  width: 12px;
+  align-self: center;
 }
 .plus {
+  color: #ff7e1b;
   width: fit-content;
   background: none;
   border: none;
   outline: none;
+  height: 12px;
+  width: 12px;
 }
 .addToCart {
   height: 50px;
@@ -289,6 +298,8 @@ h1 {
   font-weight: 600;
   gap: 20px;
   background-color: hsl(26, 100%, 55%);
+  margin-top: 20px;
+  width: 100%;
 }
 .addToCart p {
   color: hsl(0, 0%, 0%);
@@ -337,12 +348,17 @@ h1 {
   border: none;
   font-weight: 700;
   font-size: 18px;
+  transition: all 0.3s ease;
+}
+.checkout:hover{
+  transform: scale(1.1);
+  cursor: pointer;
 }
 .thumbnailImages {
   display: none;
 }
 /*  Desktop override */
-@media (min-width: 700px) {
+@media (min-width: 600px) {
   .hamburger {
     position: static;
     display: flex !important;
@@ -355,23 +371,35 @@ h1 {
     top: 0;
   }
   .hamburger a {
-    margin: 4px;
-    font-size: 13px;
+    margin: 5px;
+    font-size: 14px;
+    color: hsl(219, 9%, 45%);
+    padding-bottom: 17px;
+    padding-top: 20px;
+    border: 2px solid transparent;
+    font-weight: 300;
   }
-  .hamburger {
-    justify-self: start;
+  .hamburger a:hover {
+    border-bottom: 3px solid #ff7e1b;
+  }
+  .nav {
+    border-bottom: 0.2px solid rgb(245 231 201);
   }
   .show,
   .hide {
     left: 0 !important;
     top: 0;
   }
-  .avatar img:hover {
+  .avatar:hover {
+    width: 40px;
+    border-radius: 80%;
+    outline: none;
     border: 2px solid hsl(26, 100%, 55%);
   }
-  .container{
-    width: 80vw;
-  margin: auto;
+
+  .container {
+    width: 90vw;
+    margin: auto;
   }
 
   .wrapper {
@@ -389,14 +417,13 @@ h1 {
     display: flex;
     max-width: 65%;
     gap: 10%;
-    margin-top: 10px;
-    
+    margin-top: 30px;
   }
 
   .imageWrapper {
     display: flex;
     flex-wrap: wrap;
-    /* width: 50%; */
+    width: 60%;
     gap: 20%;
   }
   .thumbnailImages img {
@@ -409,64 +436,276 @@ h1 {
     width: 100%;
     border-radius: 10px;
   }
-  .descWrapper{
-    width: 50%;
+  .descWrapper {
+    width: 60%;
   }
   .afterImage {
-    /* width: 50%; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    
-    gap: 5px;
+
+    gap: 15px;
     padding: 10px;
   }
   .afterImage h3 {
     text-align: left;
   }
   .afterImage h1 {
-    font-size: 16px;
+    font-size: 20px;
   }
   .afterImage .details {
-    line-height: 15px;
-    font-size: 14px;
+    line-height: 18px;
+    font-size: 16px;
   }
-  .buttonWrapper{
+  .buttonWrapper {
     display: flex;
-  gap: 6%;
-
+    gap: 6%;
   }
-  .addToCart{
-    height: 20px;
-    width: 50%;
+  .addToCart {
+    height: 40px;
+    width: 100px;
     font-size: 9px;
+    padding: 7px;
+    margin-top: 0px;
   }
-  .quantity{
+  .addToCart svg {
     width: 50%;
   }
- 
+  .quantity {
+    width: 120px;
+  }
+  .amount {
+    margin: 18px;
+  }
 
+  .newPrice {
+    font-size: 20px;
+    font-weight: bolder;
+    gap: 30px;
+    align-items: baseline;
+  }
+  .basket {
+    height: 40vh;
+    width: 30vw;
+    top: 10%;
+    right: -40%;
+    box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.3);
+  }
+  .basketContent {
+    margin: auto;
+  }
+  .info {
+    margin-bottom: 5px;
+  }
+  .checkout {
+    height: 7vh;
+    width: 90%;
+    align-self: flex-end;
+    justify-self: anchor-center;
+    position: absolute;
+    bottom: 23px;
+  }
+  .oldPrice {
+    padding-left: 15px;
+  }
+  .thumbnail {
+    width: 35px;
+    height: 35px;
+  }
+  .info {
+    height: 40%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  .desc-cost {
+    font-size: 12px;
+  }
+  .desc {
+    margin-top: 20px;
+    padding-bottom: 0;
+  }
+  .cost {
+    margin-bottom: 0;
+  }
 
-.newPrice {
-  font-size: 20px;
-  font-weight: bolder;
-  gap: 30px;
-  align-items: baseline;
+  .leftNav {
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+  }
 }
-.sale {
-  background-color: hsl(0, 0%, 0%);
-  color: hsl(223, 64%, 98%);
-  font-size: 20px;
-  height: 30px;
-  width: 60px;
-  align-content: end;
-  text-align: center;
-  border-radius: 5px;
-} 
+@media (min-width: 900px) {
+  body {
+    padding-bottom: 100px;
+  }
+  .hamburger a {
+    font-size: 20px;
+  }
+  .afterImage {
+    padding-top: 2vh;
+    gap: 24px;
+  }
+  .afterImage h1 {
+    font-size: 35px;
+  }
+  .afterImage h3 {
+    font-size: 20px;
+  }
+  .afterImage .details {
+    line-height: 25px;
+  }
+  .productImages img {
+    height: 310px;
+  }
+  .price {
+    display: block;
+  }
+  .oldPrice {
+    margin-top: 10px;
+    padding-left: 0px;
+  }
+  .basket {
+    height: 42vh;
+    width: 25vw;
+  }
+  .addToCart {
+    width: 200px;
+    justify-content: space-around;
+    font-size: 15px;
+  }
+  .addToCart svg {
+    width: fit-content;
+  }
+  .addToCart p {
+    width: fit-content;
+  }
+  .quantity {
+    width: 200px;
+  }
+  .info {
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+  }
+  .basketContent {
+    padding-top: 20px;
+    font-size: 22px;
+  }
+  .desc-cost{
+    font-size: 18px;
+    margin-bottom: 9px;
+  }
 }
-@media(min-width:1000px){
-  .afterImage{
-    padding-top: 8vh;
+@media (min-width: 1300px) {
+  .desc-cost {
+    font-size: 20px;
+  }
+  .productImages img {
+    height: 400px;
+  }
+  .afterImage .details {
+    font-size: 21px;
+  }
+  .addToCart {
+    height: 50px;
+  }
+  .quantity {
+    height: 50px;
+  }
+  .checkout{
+    height: 9vh;
+  }
+}
+@media (min-width: 2000px) {
+  .productImages img {
+    height: 700px;
+  }
+  .logo {
+    width: 250px;
+  }
+  .hamburger a {
+    font-size: 35px;
+  }
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+  .cart-image {
+    gap: 50px;
+  }
+  .cart {
+    width: 50px;
+    height: 50px;
+  }
+  .afterImage {
+    padding-top: 5vh;
+  }
+  .afterImage h3 {
+    font-size: 42px;
+  }
+  .afterImage h1 {
+    font-size: 75px;
+  }
+  .afterImage .details {
+    font-size: 40px;
+    line-height: 60px;
+  }
+  .newPrice {
+    font-size: 40px;
+  }
+  .oldPrice {
+    font-size: 40px;
+  }
+  .quantity {
+    height: 100px;
+    width: 300px;
+    font-size: 36px;
+  }
+  .plus {
+    width: 25px;
+  }
+  .minus {
+    width: 25px;
+  }
+  .addToCart {
+    height: 100px;
+    font-size: 36px;
+    width: 300px;
+  }
+  .info {
+    gap: 20px;
+  }
+  .desc-cost {
+    font-size: 20px;
+  }
+  .basketContent {
+    font-size: 40px;
+  }
+  .basket h2 {
+    font-size: 30px;
+  }
+  .thumbnail {
+    width: 150px;
+    height: 150px;
+  }
+  .desc-cost {
+    font-size: 30px;
+  }
+  .info {
+    padding: 30px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+  .checkout {
+    font-size: 30px;
+    bottom: 40px;
+  }
+  .basket{
+    height: 35vh;
   }
 }

@@ -1,115 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="./images/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-		<title>Frontend Mentor | E-commerce product page</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-			rel="stylesheet" />
-		<link rel="stylesheet" href="style.css" />
-		<link rel="stylesheet" href="utility.css" />
-	</head>
-	<body>
-		<div class="container"><div class="nav flex items-center">
-			<div class="leftNav flex items-center">
-				<img class="menu" src="images/icon-menu.svg" alt="" />
-				<p class="heading"><img class="logo" src="images/logo.svg" alt="" /></p>
-			</div>
+    <title>Frontend Mentor | E-commerce product page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="utility.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav flex items-center">
+        <div class="leftNav flex items-center">
+          <img class="menu" src="images/icon-menu.svg" alt="" />
+          <div class="leftNav">
+            <p class="heading">
+              <img class="logo" src="images/logo.svg" alt="" />
+            </p>
+          <div class="hamburger">
+            <div class="close"><img src="images/icon-close.svg" alt="" /></div>
+            <a href="#">Collections</a>
+            <a href="#">Men</a>
+            <a href="#">Women</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+          </div>
 
-			<div class="hamburger">
-				<div class="close"><img src="images/icon-close.svg" alt="" /></div>
-				<a href="#">Collections</a>
-				<a href="#">Men</a>
-				<a href="#">Women</a>
-				<a href="#">About</a>
-				<a href="#">Contact</a>
-			</div>
 
-			<div class="cart-image flex items-center">
-				<div class="cartWrapper">
-					<img class="cart" src="images/icon-cart.svg" alt="" />
-					<div class="basket"></div>
-					<div class="number"></div>
-				</div>
-				<img class="avatar" src="images/image-avatar.png" alt="" />
-			</div>
-		</div>
+        <div class="cart-image flex items-center">
+          <div class="cartWrapper">
+            <img class="cart" src="images/icon-cart.svg" alt="" />
+            <div class="basket"></div>
+            <div class="number"></div>
+          </div>
+          <img class="avatar" src="images/image-avatar.png" alt="" />
+        </div>
+      </div>
 
-		<div class="overlay"></div>
-		<div class="wrapper">
-			<div class="imageWrapper"><div class="imageContainer">
-			<div class="imageSlider">
-				<button class="previous-arrow">
-					<img src="images/icon-previous.svg" alt="" />
-				</button>
+      <div class="overlay"></div>
+      <div class="wrapper">
+        <div class="imageWrapper">
+          <div class="imageContainer">
+            <div class="imageSlider">
+              <button class="previous-arrow">
+                <img src="images/icon-previous.svg" alt="" />
+              </button>
 
-				<div class="productImages">
-					<!-- Cloned images for looping -->
-					<img class="clone" src="images/image-product-4.jpg" alt="" />
+              <div class="productImages">
+                <!-- Cloned images for looping -->
+                <img class="clone" src="images/image-product-4.jpg" alt="" />
 
-					<img src="images/image-product-1.jpg" alt="" />
-					<img src="images/image-product-2.jpg" alt="" />
-					<img src="images/image-product-3.jpg" alt="" />
-					<img src="images/image-product-4.jpg" alt="" />
+                <img src="images/image-product-1.jpg" alt="" />
+                <img src="images/image-product-2.jpg" alt="" />
+                <img src="images/image-product-3.jpg" alt="" />
+                <img src="images/image-product-4.jpg" alt="" />
 
-					<img class="clone" src="images/image-product-1.jpg" alt="" />
-				</div>
-				<button class="next-arrow">
-					<img src="images/icon-next.svg" alt="" />
-				</button>
-
-			</div>
-		
-		</div>
-		<div class="thumbnailImages"></div>
-</div>
-		<div class="descWrapper"><div class="afterImage">
-			<h3>Sneaker Company</h3>
-			<h1>Fall Limited Edition Sneakers</h1>
-			<div class="description">
-				<p class="details">
-					These low-profile sneakers are your perfect casual wear companion.
-					Featuring a durable rubber outer sole, they’ll withstand everything
-					the weather can offer.
-				</p>
-			</div>
-			<div class="price">
-				<div class="newPrice flex">
-					$125.00
-					<div class="sale">50%</div>
-				</div>
-				<div class="oldPrice">$250.00</div>
-			</div>
-			<div class="buttonWrapper"><div class="quantity flex items-center">
-				<button class="minus">
-					<img class="minus" src="images/icon-minus.svg" alt="" />
-				</button>
-				<p class="amount">0</p>
-				<button class="plus">
-					<img class="plus" src="images/icon-plus.svg" alt="" />
-				</button>
-			</div>
-			<button class="addToCart flex items-center content-center">
-				<svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
-					<path
-						d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
-						fill=" hsl(0, 0%, 0%)"
-						fill-rule="nonzero" />
-				</svg>
-				<p>Add to cart</p>
-			</button>
-		</div></div></div></div>
-</div>		<script src="script.js"></script>
-	</body>
+                <img class="clone" src="images/image-product-1.jpg" alt="" />
+              </div>
+              <button class="next-arrow">
+                <img src="images/icon-next.svg" alt="" />
+              </button>
+            </div>
+          </div>
+          <div class="thumbnailImages"></div>
+        </div>
+        <div class="descWrapper">
+          <div class="afterImage">
+            <h3>Sneaker Company</h3>
+            <h1>Fall Limited Edition Sneakers</h1>
+            <div class="description">
+              <p class="details">
+                These low-profile sneakers are your perfect casual wear
+                companion. Featuring a durable rubber outer sole, they’ll
+                withstand everything the weather can offer.
+              </p>
+            </div>
+            <div class="price">
+              <div class="newPrice flex">
+                $125.00
+                <div class="sale">50%</div>
+              </div>
+              <div class="oldPrice">$250.00</div>
+            </div>
+            <div class="buttonWrapper">
+              <div class="quantity flex items-center">
+                <button class="minus items-center">
+                 <svg viewBox="0 0 12 4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M11.357 3.332A.641.641 0 0 0 12 2.69V.643A.641.641 0 0 0 11.357 0H.643A.641.641 0 0 0 0 .643v2.046c0 .357.287.643.643.643h10.714Z" id="a"/></defs><use fill="currentColor" fill-rule="nonzero" xlink:href="#a"/></svg>
+                </button>
+                <p class="amount">0</p>
+                <button class="plus">
+                 <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M12 7.023V4.977a.641.641 0 0 0-.643-.643h-3.69V.643A.641.641 0 0 0 7.022 0H4.977a.641.641 0 0 0-.643.643v3.69H.643A.641.641 0 0 0 0 4.978v2.046c0 .356.287.643.643.643h3.69v3.691c0 .356.288.643.644.643h2.046a.641.641 0 0 0 .643-.643v-3.69h3.691A.641.641 0 0 0 12 7.022Z" id="b"/></defs><use fill="currentColor" fill-rule="nonzero" xlink:href="#b"/></svg>
+                </button>
+              </div>
+              <button class="addToCart flex items-center content-center">
+                <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+                    fill=" hsl(0, 0%, 0%)"
+                    fill-rule="nonzero"
+                  />
+                </svg>
+                <p>Add to cart</p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

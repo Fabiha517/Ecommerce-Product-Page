@@ -205,7 +205,7 @@ function addToCart() {
 	});
 }
 addToCart();
-const meq = window.matchMedia("(min-width: 700px)");
+const meq = window.matchMedia("(min-width: 600px)");
 function displayThumbnail() {
 	
 if (meq.matches){
