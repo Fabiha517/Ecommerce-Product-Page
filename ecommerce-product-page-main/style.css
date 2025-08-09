@@ -142,6 +142,8 @@ body {
   display: block;
   text-decoration: none;
   color: black;
+  border: 3px solid transparent;
+  box-sizing: border-box;
 }
 
 .overlay {
@@ -376,11 +378,12 @@ h1 {
     color: hsl(219, 9%, 45%);
     padding-bottom: 17px;
     padding-top: 20px;
-    border: 2px solid transparent;
+    
     font-weight: 300;
   }
   .hamburger a:hover {
     border-bottom: 3px solid #ff7e1b;
+    color: black;
   }
   .nav {
     border-bottom: 0.2px solid rgb(245 231 201);
@@ -540,7 +543,11 @@ h1 {
     padding-bottom: 100px;
   }
   .hamburger a {
-    font-size: 20px;
+    font-size: 17px;
+    
+  }
+  .hamburger{
+    gap: 19px;
   }
   .afterImage {
     padding-top: 2vh;
