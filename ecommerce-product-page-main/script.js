@@ -247,9 +247,13 @@ function displayThumbnail() {
 }
 meq.addEventListener("change", displayThumbnail());
 
-const meqs = window.matchMedia("(min-width:1024px)");
-
+const meqs = window.matchMedia("(min-width:768px)");
+let allowFunction = true;
 function clickThumbnail() {
+  allowFunction = true;
+  if (!allowFunction) {
+    return;
+  }
   // Get all thumbnail elements
   const thumbs = document.querySelectorAll(".thumb-container"); // Changed to container
 
@@ -261,7 +265,7 @@ function clickThumbnail() {
       // Move the slider to show the correct image
       updateSlider();
 
-      // Highlight the active thumbnail (optional)
+      // Highlight the active thumbnail
       thumbs.forEach((t) => t.classList.remove("active"));
       thumb.classList.add("active");
     });
@@ -269,10 +273,9 @@ function clickThumbnail() {
 }
 
 clickThumbnail();
-
-function imageOverlay() {
-  const next = document.querySelector(".next-arrow");
-  const previous = document.querySelector(".previous-arrow");
+const next = document.querySelector(".next-arrow");
+const previous = document.querySelector(".previous-arrow");
+function handleArrows() {
   if (meqs.matches) {
     next.style.display = "none";
     previous.style.display = "none";
@@ -281,5 +284,201 @@ function imageOverlay() {
     previous.style.display = "block";
   }
 }
-imageOverlay();
+handleArrows();
+meqs.addEventListener("change", handleArrows);
+
+function imageOverlay() {
+  const imageContainer = document.querySelector(".imageContainer");
+  const thumbnailImages = document.querySelector(".thumbnailImages");
+  if (!meqs.matches) return;
+
+  imageContainer.addEventListener("click", () => {
+    const existingOverlay = document.querySelector(".image-wrapper");
+    if (existingOverlay) existingOverlay.remove();
+
+    const overlay = document.createElement("div");
+    overlay.className = "image-wrapper";
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    `;
+
+    // Close button
+    const closeBtn = document.createElement("button");
+    
+    closeBtn.innerHTML =`<svg class="overlay-close" width="14" height="15" xmlns="http://www.w3.org/2000/svg"><path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill="currentColor" fill-rule="evenodd"/></svg>`;
+    closeBtn.style.cssText = `
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      z-index:1100
+    `;
+    closeBtn.addEventListener("click", () => overlay.remove());
+
+    // Main content container
+    const content = document.createElement("div");
+    content.style.cssText = `
+      width: 80%;
+      max-width: 550px;
+      position: relative;
+    `;
+
+    // Create new slider container for overlay
+    const sliderContainer = document.createElement("div");
+    sliderContainer.className = "imageSlider-overlay";
+    sliderContainer.style.width = "100%";
+    sliderContainer.style.position = "relative";
+    sliderContainer.style.overflow = "hidden";
+
+    // Create new product images container
+    const productImagesOverlay = document.createElement("div");
+    productImagesOverlay.className = "productImages-overlay";
+    productImagesOverlay.style.display = "flex";
+    productImagesOverlay.style.justifyContent = "center";
+    productImagesOverlay.style.width = "100%";
+    productImagesOverlay.style.transition = "transform 0.4s ease-in-out";
+
+    const realImages = Array.from(
+      document.querySelectorAll(".productImages img")
+    ).filter((img) => !img.classList.contains("clone"));
+    const currentImage = realImages[currentIndex - 1]; // Adjust for 0-based index
+
+    // Add only the current image to the overlay
+    if (currentImage) {
+      const imgClone = currentImage.cloneNode(true);
+      // imgClone.style.width = "100%";
+      imgClone.style.height = "auto";
+      imgClone.style.maxHeight = "60vh";
+      imgClone.style.objectFit = "contain";
+      imgClone.style.borderRadius = "5%";
+      productImagesOverlay.appendChild(imgClone);
+    }
+
+    const thumbnailsContainer = document.createElement("div");
+    thumbnailsContainer.className = "thumbnailImages-overlay";
+    thumbnailsContainer.style.display = "flex";
+    thumbnailsContainer.style.justifyContent = "space-between";
+    thumbnailsContainer.style.justifySelf = "center";
+    thumbnailsContainer.style.marginTop = "20px";
+    thumbnailsContainer.style.width = "60%";
+    thumbnailsContainer.style.gap = "5%";
+
+    const originalThumbnails = document.querySelectorAll(".thumb-container");
+    originalThumbnails.forEach((thumb, index) => {
+      const thumbClone = thumb.cloneNode(true);
+      thumbClone.addEventListener("click", () => {
+        currentIndex = index + 1;
+        updateOverlayImage();
+        updateThumbnailActiveState();
+      });
+
+      thumbnailsContainer.appendChild(thumbClone);
+    });
+    // Navigation arrows
+    const prevBtn = document.createElement("button");
+    
+    prevBtn.className = "previous-arrow-overlay";
+    prevBtn.innerHTML = `<svg class="overlay-previous" width="12" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 1 3 9l8 8" stroke="currentColor" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>`;
+    prevBtn.style.position = "absolute";
+    prevBtn.style.left = "65px";
+    prevBtn.style.top = "50%";
+    prevBtn.style.transform = "translateY(-50%)";
+    prevBtn.style.backgroundColor = "white";
+    prevBtn.style.borderRadius = "50%";
+    prevBtn.style.border = "none";
+    prevBtn.style.width = "40px";
+    prevBtn.style.height = "40px";
+    prevBtn.style.display = "flex";
+    prevBtn.style.alignItems = "center";
+    prevBtn.style.justifyContent = "center";
+
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "next-arrow-overlay";
+    nextBtn.innerHTML = `<svg class="overlay-next" width="13" height="18" xmlns="http://www.w3.org/2000/svg"><path d="m2 1 8 8-8 8" stroke="currentColor" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>`;
+    nextBtn.style.position = "absolute";
+    nextBtn.style.right = "65px";
+    nextBtn.style.top = "50%";
+    nextBtn.style.transform = "translateY(-50%)";
+    nextBtn.style.backgroundColor = "white";
+    nextBtn.style.borderRadius = "50%";
+    nextBtn.style.border = "none";
+    nextBtn.style.width = "40px";
+    nextBtn.style.height = "40px";
+    nextBtn.style.display = "flex";
+    nextBtn.style.alignItems = "center";
+    nextBtn.style.justifyContent = "center";
+
+    // Build the structure
+    sliderContainer.appendChild(productImagesOverlay);
+    content.appendChild(sliderContainer);
+    content.appendChild(thumbnailsContainer);
+    overlay.appendChild(content);
+    sliderContainer.appendChild(prevBtn);
+    sliderContainer.appendChild(nextBtn);
+  overlay.appendChild(closeBtn);
+    document.body.appendChild(overlay);
+
+    // Navigation functionality
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 1) {
+        currentIndex--;
+        updateOverlayImage();
+        updateThumbnailActiveState()
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (currentIndex < TotalImages) {
+        currentIndex++;
+        updateOverlayImage();
+        updateThumbnailActiveState()
+
+      }
+    });
+
+    function updateOverlayImage() {
+      const images = document.querySelectorAll(".productImages img");
+      const newImage = images[currentIndex];
+      if (newImage) {
+        productImagesOverlay.innerHTML = "";
+        const imgClone = newImage.cloneNode(true);
+        // imgClone.style.width = "100%";
+        imgClone.style.height = "60vh";
+        imgClone.style.objectFit = "contain";
+        imgClone.style.borderRadius = "10%";
+        productImagesOverlay.appendChild(imgClone);
+      }
+    }
+
+    function updateThumbnailActiveState() {
+      const overlayThumbs =
+        thumbnailsContainer.querySelectorAll(".thumb-container");
+      overlayThumbs.forEach((thumb, index) => {
+        thumb.classList.toggle("active", index === currentIndex - 1);
+      });
+    }
+
+    // Close when clicking outside
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) overlay.remove();
+    });
+  });
+}
+if (meqs.matches) {
+  imageOverlay();
+}
 meqs.addEventListener("change", imageOverlay);
